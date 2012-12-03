@@ -40,7 +40,7 @@ class clsFotoBox(db.Model):
   creation_date = db.DateTimeProperty(auto_now_add=True) # Creation_date: DateTime the album was created
   
 ###########################################
-# Define FotoBox Class
+# Define Foto Class
 ###########################################
 class clsFoto(db.Model):
   name = db.StringProperty() #user entered name for the foto
@@ -141,7 +141,10 @@ class FotoBoxFeedbackPoster(webapp.RequestHandler):
        oMsg = clsFeedbackMessage(user=oUser.nickname(), message=strMsgtext)
        oMsg.put() 
        # After adding the feedback redirect to the feedback page,
-    self.redirect('/feedback')
+       self.redirect('/feedback')
+    else:
+       self.error(400)
+       self.response.out.write('Please provide Feedback Text. Select BACK button in browser to retry')
 
 ###########################################
 # Define FotoBox List 
@@ -180,7 +183,8 @@ class FotoBoxCreate(webapp.RequestHandler):
        #redirect back to main catalog page
        self.redirect('/index')
     else:
-       self.response.out.write('Fotobox Name is a mandatory field')
+       self.error(400)
+       self.response.out.write('Fotobox Name is a mandatory field. Select BACK button in browser to retry')
 
 ###########################################
 # FotoBox Handler for viewing the foto's in a particular fotobox
@@ -244,37 +248,46 @@ class FotoBoxUploadFoto(webapp.RequestHandler):
 
     #use cgi.escape functions to escape special characters like "<>&."
     strName = cgi.escape(self.request.get('name'), quote=True)
-    strCaption = cgi.escape(self.request.get('caption'), quote=True)
+    
+    if strName:
+      strCaption = cgi.escape(self.request.get('caption'), quote=True)
 
-    #process tags and split them, add them to tags collection
-    colTags = cgi.escape(self.request.get('tags'), quote=True).split(',')
-    colTags = [oTag.strip() for oTag in colTags]
-
-    # Get the actual image
-    oFoto_data = self.request.POST.get('fotofile').file.read()
-
-    try: 
-      oFoto = images.Image(oFoto_data)
-      #transform image to PNG
-      oFoto.im_feeling_lucky()
-      oPng_data = oFoto.execute_transforms(images.PNG)
-      #resize the image
-      oFoto.resize(60, 100)
-      #generate thumbnail
-      oThumbnail_data = oFoto.execute_transforms(images.PNG)
-      #save foto
-      clsFoto(submitter=users.get_current_user(),
-              name=strName,
-              caption=strCaption,
-              fotobox=oFotobox,
-              tags=colTags,
-              data=oPng_data,
-              thumbnail_data=oThumbnail_data).put()
-      #redirect to fotobox page
-      self.redirect('/fotobox/%s' % fotobox.key())
-    except: 
-      self.error(400)
-      self.response.out.write('Unable to process image. The image is either to large or not a JPEG, GIF or PNG format')
+      #process tags and split them, add them to tags collection
+      colTags = cgi.escape(self.request.get('tags'), quote=True).split(',')
+      colTags = [oTag.strip() for oTag in colTags]
+    
+      # Get the actual image
+      oFoto_data = self.request.POST.get('fotofile').file.read()
+      
+      if oFoto_data:
+        try: 
+          oFoto = images.Image(oFoto_data)
+          #transform image to PNG
+          oFoto.im_feeling_lucky()
+          oPng_data = oFoto.execute_transforms(images.PNG)
+          #resize the image
+          oFoto.resize(100, 100)
+          #generate thumbnail
+          oThumbnail_data = oFoto.execute_transforms(images.PNG)
+          #save foto
+          clsFoto(submitter=users.get_current_user(),
+                  name=strName,
+                  caption=strCaption,
+                  fotobox=oFotobox,
+                  tags=colTags,
+                  data=oPng_data,
+                  thumbnail_data=oThumbnail_data).put()
+          #redirect to fotobox page
+          self.redirect('/fotobox/%s' % oFotobox.key())
+        except: 
+          self.error(400)
+          self.response.out.write('Unable to process image. The image is either to large or not a JPEG, GIF or PNG format')
+      else:
+        self.error(400)
+        self.response.out.write('No foto was selected for upload. Select BACK button in browser to retry')
+    else:
+       self.error(400)
+       self.response.out.write('Foto Name is a mandatory field. Select BACK button in browser to retry')
 
 ###########################################
 # FotoBox Handler for viewing a single foto.
