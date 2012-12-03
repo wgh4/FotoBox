@@ -1,0 +1,18 @@
+{% extends "master.html" %}
+{% block title %}Setup New FotoBox{% endblock %}
+{% block content %}
+<br>
+<form action='/new' method='post'>
+  
+<table>
+<tr><th align="right">FotoBox Name:</th><td><Input name="fotoboxname" size='80' type='text' required='required'></input></td></tr>
+<tr><th align="right">FotoBox Description:</th><td><Textarea name="fotoboxdescription" type='text' rows='4' cols='58' required='required'></Textarea></td></tr>
+</table>
+<hr>
+<div><input type='submit' value='Create FotoBox'></div>
+</form>
+<div class='fotoboxfooter'>
+<a href='/index'>Return to Main FotoBox Catalog</a><br>
+<a href='/feedback'>Submit Feedback</a><br>
+</div>
+{%endblock content %}

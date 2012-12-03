@@ -1,0 +1,23 @@
+{% extends "master.html" %}
+{% block title %}Searching by tag{% endblock %}
+{% block content %}
+<br>
+<br>
+<form action='/search' method='get'>
+    Enter a tag to search for: <input type='text' name='q'>
+  <input type='submit' value='Search'>
+</form>
+{% for foto in fotos %}
+<div class='fotopreview'>
+  <img src='/thumbnail/{{foto.key}}'>
+  <div class='fotolink'><a
+  href='/show_image/{{foto.key}}'>{{foto.name}}</a></div>
+  <div class='fotoowner'>{{foto.submitter}}</div>
+  <br>
+</div>
+{% endfor %}
+<div class='fotoboxfooter'>
+<a href='/index'>Return to Main FotoBox Catalog</a><br>
+<a href='/feedback'>Submit Feedback</a><br>
+</div>
+{% endblock %}

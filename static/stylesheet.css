@@ -1,0 +1,104 @@
+body {
+  font-family: arial, san-serif;
+  background-image:url(images/polaroidbg.jpg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-attachment: fixed;
+}
+
+div.header {
+  background-color: #a5a1a0;
+  border-top: 3px solid #736f6e;
+  height: 100%;
+  overflow:hidden;
+  padding: 7px;
+  margin-top: 5px;
+  font-size: 36pt;
+}
+
+div.headerbar {
+  float: right;
+  background-color:#a5a1a0;
+}
+
+div.content, div.fotoboxpreview {
+  clear: both;
+}
+
+div.fotoboxpreview {
+  margin: 10px;
+  border: 1px solid #888;
+  height: auto;
+  width: auto;
+  color: grey;
+  font-size: 10pt;
+  float: left;
+}
+
+div.fotoboxfooter {
+   position:fixed;
+   bottom:0;
+   width:99%;
+   height:60px;   /* Height of the footer */
+   background-color:#a5a1a0;
+   color: #fff;
+   font-style : italic;   
+}
+
+div.fotoboxtitle {
+  font-size: 14pt;
+}
+
+div.fotoboxowner,
+div.fotosubmitter,
+div.fototitle,
+div.feedbacksubmitter,
+div.fototags{
+  color: green;
+}
+
+div.previewname {
+  color: grey;
+  font-style : italic;
+  text-align: center;
+  font-size: 8pt;
+
+}
+
+
+
+div.welcome_content {
+  color: grey;
+}
+
+div.welcome_login {
+  color: red;
+}
+
+div.feedbacktext {
+  font-style : italic;
+}
+
+	
+div.polaroid {
+  position: relative;
+  width: 220px;
+}
+ 
+div.polaroid img {
+  border: 10px solid #888;
+  border-bottom: 45px solid #888;
+  -webkit-box-shadow: 3px 3px 3px #777;
+     -moz-box-shadow: 3px 3px 3px #777;
+          box-shadow: 3px 3px 3px #777;
+}
+ 
+div.polaroid p {
+  position: absolute;
+  text-align: center;
+  width: 100%;
+  bottom: 0px;
+  font-style : italic;
+  color: #000;
+}
+

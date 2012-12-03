@@ -1,0 +1,21 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+  "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+  <head>
+    <title>
+      {% block headtitle %}CIT FotoBox - Share your Photos in the Cloud{% endblock %}
+    </title>
+    <link href='/static/stylesheet.css' rel='stylesheet' type='text/css'>
+  </head>
+  <body>
+    <div class='header'><img src= "/static/images/citlogo50px.png"</>{%block header %}
+    CIT FotoBox! - {% block title %}{% endblock %}
+    {% endblock %}</div>
+    <div class='content'>
+    {% block content %}{% endblock %}
+    </div>
+  </body>
+  <h2 id="logo"><a href="http://code.google.com/appengine"><img src="https://developers.google.com/appengine/images/appengine-silver-120x30.gif" style="position: fixed; bottom: 60px; right: 8px;"/></a></h2>
+</html>
+
+

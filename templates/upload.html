@@ -1,0 +1,19 @@
+{% extends "master.html" %}
+{% block title %}Uploading new foto{% endblock %}
+{% block content %}
+<br>
+<form action='/upload/{{fotobox_key}}' method='post' enctype='multipart/form-data'>
+    <table>
+    <tr><th align="right"><div class='formrow'>Name:</div></th><td><input type='text' name='name' size='80' required='required'></input></td></tr>
+    <tr><th align="right"><div class='formrow'>Caption:</div></th><td><textarea name='caption' rows='4' cols='58' required='required'></textarea></td></tr>
+    <tr><th align="right"><div class='formrow'>Tags:</div></th><td><input type='text' name='tags' size='80'></input> (comma separated) </td></tr>
+    <tr><th align="right"><div class='formrow'><div class='formrow'>File:</div></th><td><input type='file' name='fotofile' accept="image/gif, image/png, image/jpeg"></input></td></tr>
+    <tr><td><input type="submit" value="Send"></td></tr>
+    </table>
+</form>
+<div class='fotoboxfooter'>
+<a href='/index'>Return to Main FotoBox Catalog</a><br>
+<a href='/feedback'>Submit Feedback</a><br>
+</div>
+
+{% endblock %}

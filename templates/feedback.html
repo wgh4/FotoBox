@@ -1,0 +1,23 @@
+{% extends "master.html" %}
+{% block title %}Feedback{% endblock %}
+{% block content %}
+ 
+<form method="post" action="/talk"> 
+ <p><b>Submit your Feedback here!</b></p>
+ <div><textarea name='message' rows='5' cols='60' required='required'></textarea></div>
+ <div><input type='submit' value='Submit Feedback'/></div>
+</form>
+
+<p> Current time is {% now "F j Y H:i" %}</p>
+
+{% for m in msg_list %}
+  <p>
+   <div class='feedbacksubmitter'>On {{ m.timestamp|date:"d M H:i" }}, {{ m.user }} wrote: </div>
+   <div class='feedbacktext'>"{{ m.message|escape }}"</div>
+  </p> <!-- (4) -->
+{% endfor %}
+<div class='fotoboxfooter'>
+<a href='/index'>Main FotoBox Catalog</a><br>
+<a href='/search'>Fotobox Search</a><br>
+</div>
+{% endblock content %}

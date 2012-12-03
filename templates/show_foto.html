@@ -1,0 +1,31 @@
+{% extends "master.html" %}
+{% block title %}Viewing {{foto.title}}{% endblock %}
+{% block content %}
+<br>  
+<div class='fototitle'>
+  <table>
+  <tr><th align="right">Foto Name:</th><td><Input name="fotoname" value = '{{foto.name}}' size='80' disabled="disabled"></input></td></tr>
+  <tr><th align="right">Submitted by:</th><td><Input name="fotosubmitter" value = '{{foto.submitter}}' size='80' disabled="disabled"></input></td></tr>
+  <tr><th align="right">Tags:</th><td>
+  <div class='fototags'>
+  {% for tag in foto.tags %}
+  <a href='/search?q={{tag}}'>{{tag}}</a>{% if not forloop.last %},{% endif %}
+  {% endfor %}
+  </td></tr>
+  </table>
+</div>
+<hr>
+<FORM><INPUT TYPE="button" onClick="parent.location='/sendmail/{{foto_key}}'" VALUE="Email Foto" align="left"></FORM>
+<hr>
+<br>
+<div class="polaroid">
+  <p>{{foto.caption}}</p>
+  <img src='/image/{{foto_key}}'>
+</div><br>
+<br>
+<div class='fotoboxfooter'>
+<a href='/fotobox/{{foto.fotobox.key}}'>Back to Current FotoBox</a><br>
+<a href='/index'>Return to Main FotoBox Catalog</a><br>
+<a href='/feedback'>Submit Feedback</a><br>
+</div>
+{% endblock %}

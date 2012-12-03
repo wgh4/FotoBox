@@ -1,0 +1,14 @@
+{% extends "master.html" %}
+{% block title %}Email Foto{% endblock %}
+{% block content %}
+<br>
+<br>
+<img src= "/static/images/mail-pic.png"</img>
+Fotobox successfully emailed the foto {{foto.name}} to {{mailto}} ! <br>
+<div class='fotoboxfooter'>
+<a href="/show_image/{{foto_key}}">Return to Foto Page</a><br>    
+<a href='/index'>Return to Main FotoBox Catalog</a><br>
+<a href='/feedback'>Submit Feedback</a><br>
+</div>
+{% endblock %}
+

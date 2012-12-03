@@ -1,0 +1,28 @@
+{% extends "master.html" %}
+{% block title %}Foto(s) in FotoBox {{fotobox_name}}{% endblock %}
+{% block content %}
+<br>
+FotoBox {{fotobox_name}} contains {{num_results}} foto(s).<br>
+<table>
+{% for row in fotos %}
+<tr>
+{% for foto in row %}
+<td>
+  <div class='fotoboxpreview'>
+  <a href='/show_image/{{foto.key}}'>
+      <img src='/thumbnail/{{foto.key}}'>
+  </a></div>
+  <div class='previewname'>{{foto.name}}</div>
+  <br>
+</td>
+{% endfor %}
+</tr>
+{% endfor %}
+</table>
+<div class='fotoboxfooter'>
+<a href='/index'>Return to Main FotoBox Catalog</a><br>
+<a href='/feedback'>Submit Feedback</a><br>
+<a href='/upload/{{fotobox_key}}'>Upload new foto</a><br>
+</div>
+
+{% endblock content %}

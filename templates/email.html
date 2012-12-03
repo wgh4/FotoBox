@@ -1,0 +1,20 @@
+{% extends "master.html" %}
+{% block title %}Email Foto{% endblock %}
+{% block content %}
+<br>
+<form action='/sendmail/{{foto_key}}' method='POST'>
+    <table ALIGN="left">
+    <tr><th align="right">To:</th><td><Input name="mailto" value = '{{user}}' size='80' disabled="disabled"></input></td></tr>
+    <tr><th align="right">Cc:</th><td><Input name="mailcc" size='80'></input></td></tr>
+    <tr><th align="right">Subject:</th><td><Input name="mailsubject" value ='Send from FotoBox! - {{foto.name}}' size='80' required='required'></input></td></tr>
+    <tr><th align="right">Attachment: </th><td><img src='/static/images/attachment_16.png'> {{foto.name}}.png</td></tr>   
+    <tr><th align="right">Text:</th><td><textarea name="mailbody" placeholder= 'Checkout the attached foto I found on fotobox' rows='4' cols='58' required='required'></textarea></td></tr>
+    </tr>
+    <tr><td><input type="submit" value="Email"></td></tr>
+    </table>
+</form>
+<div class='fotoboxfooter'>
+<a href='/index'>Return to Main FotoBox Catalog</a><br>
+<a href='/feedback'>Submit Feedback</a><br>
+</div>
+{% endblock %}

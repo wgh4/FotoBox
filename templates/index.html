@@ -1,0 +1,18 @@
+{% extends "master.html" %}
+{% block title %}Main Catalog{% endblock %}
+{% block content %}
+{% for fotobox in fotoboxes %}
+<div class='fotoboxpreview'>
+  <div class='fotoboxtitle'><img src= "/static/images/index.jpg"</><a href='/fotobox/{{fotobox.key}}'>{{fotobox.name}}</a></div>
+  <div class='fotoboxdescription'>Description: {{fotobox.description}}</div>
+  <div class='fotoboxcreator'>Owner: {{fotobox.owner.nickname}}</div>
+  <div class='fotoboxcreationdate'>Created on: {{fotobox.creation_date|date:"d M H:i"}}</div>
+  <br>
+</div>
+{% endfor %}
+<div class='fotoboxfooter'>
+<a href='/search'>Fotobox Search</a><br>
+<a href='/new'>Create New FotoBox</a><br>
+<a href='/feedback'>Submit Feedback</a><br>
+</div>
+{% endblock %}

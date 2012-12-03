@@ -1,0 +1,28 @@
+{% extends "master.html" %}
+{% block title %}Welcome to CIT Fotobox!{% endblock %}
+{% block content %}
+
+<br>
+<br>
+<div class='welcome_content'><p>
+FotoBox is almost certainly the best online photo management and sharing application in the world.<br>
+Show off your favorite photos to the world, securely ...<br>
+<br>
+Fotobox! is home to over five billion of the world's photos. Get a glimpse of another world by diving <br>
+into the official Cork City photostream or the newest images from CIT. Or explore a moment in history <br>
+with archived collections from the Cork Museum, Cork Library and the Titanic Cobh Files. See the world <br>
+through someone else's eyes, right here on FotoBox.<br></p></div>
+
+{% if authenticated %}
+You are logged in as {{username}}. <a href='{{url}}'>Log Out</a> here.<br>
+<br>
+Explore the world's most interesting photos, right here. <a href='/index'>Enter Main FotoBox Catalog</a>
+{% else %}
+<div class='welcome_login'><p>
+You are currently not authenticated. Please <a href='{{url}}'>Log In</a> here.<br>
+<br>
+You are currently unable to create a new FotoBox and add new Photos
+</p></div>
+{% endif %}
+{% endblock content %}
+
