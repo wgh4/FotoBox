@@ -28,7 +28,7 @@ The application will be called CIT Fotobox (foto is dutch for photo as I am from
 Users with a valid google user account can login to the application and are shown the welcome page. From the welcome page that can enter the main foto catalog
 From the main page the user has the option to view the contents of an existing fotobox, do a search on the fotos, submit feedback or create a new fotobox container.
 Selecting a fotobox will display the contents of the box and will show a thumbnail of all fotos containing within the box. Selecting a thumbnail will display the full
-foto. The user has the option to email the foto to him or herself and to other users. New fotos (JPEG, GIF, PNG files) can be uploaded by selecting the upload new foto option
+foto. The user has the option to email the foto to him or herself and to other users or download the image (select download and then right mouse click, save as). New fotos (JPEG, GIF, PNG files) can be uploaded by selecting the upload new foto option
 When uploading a new foto, the user has to provide a name, caption and some TAGS. The TAGS can then be used for searching.
 
 ***************************
