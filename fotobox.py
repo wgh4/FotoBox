@@ -262,8 +262,12 @@ class FotoBoxUploadFoto(webapp.RequestHandler):
       if oFoto_data:
         try: 
           oFoto = images.Image(oFoto_data)
-          #transform image to PNG
+          
+          #Adjusts the contrast and color levels of an image according
+          #to an algorithm for improving photographs          
           oFoto.im_feeling_lucky()
+
+          #transform image to PNG
           oPng_data = oFoto.execute_transforms(images.PNG)
           #resize the image
           oFoto.resize(100, 100)
@@ -281,7 +285,7 @@ class FotoBoxUploadFoto(webapp.RequestHandler):
           self.redirect('/fotobox/%s' % oFotobox.key())
         except: 
           self.error(400)
-          self.response.out.write('Unable to process image. The image is either to large or not a JPEG, GIF or PNG format')
+          self.response.out.write('Unable to process image. The image is either to large or not a JPEG, GIF or PNG format. Select BACK button in browser to retry')
       else:
         self.error(400)
         self.response.out.write('No foto was selected for upload. Select BACK button in browser to retry')
