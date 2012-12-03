@@ -85,6 +85,25 @@ FotoBoxLoginHandler-  FotoBox Authentication Handler
 All templates inherit from the master.html template and use the stylesheet.css
 
 ***************************
+* FORMS
+***************************
+
+Welcome FORM - Welcome Page, does authentication check and shows logon / logoff option
+Index FORM - Displays all existing fotoboxes. provides links to create new fotobox, search and feedback
+Feedback FORM - Displays feedback form and all existing feedback records. provides links to index page and search
+Search FORM - Displays search form and lets user search on all tags. provides links to index page and feedback page
+
+Fotobox FORM - Displays  fotobox page with thumbnail of all fotos. provides links to index page, feedback page and add new 
+New FORM - Displays new fotobox page and lets user submit new fotobox collection. provides links to index page and feedback page
+
+Upload FORM - Enables the users to add a new foto to a fotobox. provides links to index page and feedback page
+Show_foto FORM - Shows the full view of a foto. provides links to index page and feedback page and link back to the fotobox container
+Email FORM - Enables the user to email a foto to himself and additional users. provides links to index page and feedback page
+EmailSend FORM - confirmation page
+
+Master FORM
+
+***************************
 * Data Model
 ***************************
 
@@ -130,5 +149,6 @@ The login: required option in app.yaml will force this
 
 The application is running in GAE and can be accessed on the following URL: http://citfotobox.appspot.com/
 4 fotoboxes are created with different photos and some users left some Feedback
+Please make sure the files to be uploaded are less than 1 Mb in size.
 
 
