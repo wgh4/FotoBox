@@ -43,6 +43,42 @@ from google.appengine.ext import db
 from google.appengine.ext import webapp
 from google.appengine.ext.webapp import template
 
+###########################################
+# Classes
+###########################################
+
+Email Handler - shows email form and sends email
+    
+FotoBoxFeedback displays Feedback form
+
+FotoBoxFeedbackPoster submits feedback
+
+FotoBoxIndex shows list of fotoboxes on index form
+
+FotoBoxCreate - FotoBox Handler for creating a new fotobox via HTML formand Renders: new.html
+
+FotoBoxView for viewing the foto's in a particular footboy
+    Args: fotobox_key: the datastore key for the fotobox to view.
+    Renders: fotobox.html, max 5 fotos per Row
+
+FotoBoxUploadFoto-  FotoBox Handler for uploading fotos in a particular fotobox
+    Args: fotobox_key: the datastore key for the fotobox to view, fotobox_name: the name of the fotobox
+    Renders: fotobox.html
+
+FotoBoxShowFoto-  FotoBox Handler for viewing a single foto.
+     Args: foto_key: the datastore key for the foto to view.
+     Renders: show_foto.html
+     This Handler does not serve the foto, but only renders the page containing it. The foto is served in FotoBoxServeFoto.
+
+FotoBoxServeFoto-  FotoBox Handler for dynamically serving a foto from the datastore.
+     Args: foto_key: the datastore key for the foto to view, display_type: the type of image to serve (image or thumbnail)
+ 
+     This Handler pulls the appropriate data out of the datastore and serves it.
+
+FotoBoxSearch -  FotoBox Handler for searching fotos by tag. Displays the tag search box and possibly a list of results.
+
+FotoBoxLoginHandler-  FotoBox Authentication Handler 
+
 ***************************
 * Templates
 ***************************

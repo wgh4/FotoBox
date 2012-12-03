@@ -62,6 +62,7 @@ class clsFeedbackMessage(db.Model):
 
 ###########################################
 # Define Email Handler
+# shows email form and sends email
 ###########################################
 class EmailHandler(webapp.RequestHandler):
     #Displays the email form.
